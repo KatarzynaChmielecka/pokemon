@@ -15,5 +15,4 @@ PokemonCard.propTypes = {
   image: PropTypes.string,
   alt: PropTypes.string,
   name: PropTypes.string,
-  index: PropTypes.string,
 };
