@@ -1,5 +1,7 @@
+import AllPokemons from '../components/AllPokemons';
+
 const Home = () => {
-  return <div>Home</div>;
+  return <AllPokemons />;
 };
 
 export default Home;
