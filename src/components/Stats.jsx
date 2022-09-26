@@ -31,6 +31,6 @@ const Stats = ({ name, base_stat }) => {
 export default Stats;
 
 Stats.propTypes = {
-  base_stat: PropTypes.string,
+  base_stat: PropTypes.number,
   name: PropTypes.string,
 };
