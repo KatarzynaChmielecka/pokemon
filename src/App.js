@@ -2,21 +2,17 @@ import './App.css';
 
 import { Route, Routes } from 'react-router-dom';
 
-import Details from './pages/Details';
-import Home from './pages/Home';
+import DetailsPage from './pages/DetailsPage';
+import HomePage from './pages/HomePage';
 import Layout from './components/layout/Layout';
-import Moves from './pages/Moves';
-import Places from './pages/Places';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/details/:id" element={<Details />} />
-          <Route path="/moves/:id" element={<Moves />} />
-          <Route path="/places/:id" element={<Places />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/details/:name" element={<DetailsPage />} />
         </Route>
       </Routes>
     </div>
