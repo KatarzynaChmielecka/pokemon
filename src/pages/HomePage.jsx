@@ -1,7 +1,7 @@
 import AllPokemons from '../components/AllPokemons';
 
-const Home = () => {
+const HomePage = () => {
   return <AllPokemons />;
 };
 
-export default Home;
+export default HomePage;
