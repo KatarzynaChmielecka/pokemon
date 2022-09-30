@@ -66,7 +66,10 @@ const DetailsPage = () => {
   });
 
   return (
-    <TabsUnstyled defaultValue={0}>
+    <TabsUnstyled
+      defaultValue={0}
+      // style={{width:'100%'}}
+    >
       <TabsListUnstyled className={classes['tabs-list']}>
         <TabUnstyled className={classes.tab}>DETAILS</TabUnstyled>
         <TabUnstyled className={classes.tab}>MOVES</TabUnstyled>
