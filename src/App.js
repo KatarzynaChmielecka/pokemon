@@ -1,5 +1,3 @@
-import './App.css';
-
 import { Route, Routes } from 'react-router-dom';
 
 import DetailsPage from './pages/DetailsPage';
