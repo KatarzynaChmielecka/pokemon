@@ -8,13 +8,9 @@ import { colors } from '../consts/colors';
 const AllPokemons = ({ searchInput }) => {
   const { allPokemons } = useContext(PokemonContext);
 
-  const filteredSearchPokemons = allPokemons.filter((el) => {
-    if (searchInput === '') {
-      return el;
-    } else {
-      return el.name.toLowerCase().includes(searchInput);
-    }
-  });
+  const filteredSearchPokemons = allPokemons.filter((el) =>
+    searchInput === '' ? el : el.name.toLowerCase().includes(searchInput),
+  );
   return (
     <>
       {filteredSearchPokemons.length === 0 && <h1>No data found</h1>}
