@@ -66,10 +66,7 @@ const DetailsPage = () => {
   });
 
   return (
-    <TabsUnstyled
-      defaultValue={0}
-      // style={{width:'100%'}}
-    >
+    <TabsUnstyled defaultValue={0} style={{ width: '100%' }}>
       <TabsListUnstyled className={classes['tabs-list']}>
         <TabUnstyled className={classes.tab}>DETAILS</TabUnstyled>
         <TabUnstyled className={classes.tab}>MOVES</TabUnstyled>
@@ -85,7 +82,12 @@ const DetailsPage = () => {
 
         {pokemonSpecies && (
           <>
-            <p>{pokemonSpecies.flavor_text_entries[44].flavor_text}</p>
+            <p>
+              {pokemonSpecies.flavor_text_entries[0].flavor_text.replace(
+                '\f',
+                ' ',
+              )}
+            </p>
           </>
         )}
         <div>
