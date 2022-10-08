@@ -1,6 +1,6 @@
 .card-wrapper {
-  width: 9.38rem;
-  height: 9.38rem;
+  width: 9.06rem;
+  height: 10rem;
   position: relative;
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
 }
 
 .card-wrapper__name {
-  height: 1.25rem;
+  height: 2.25rem;
   width: 100%;
   background: #00000050;
   position: absolute;
@@ -24,4 +24,5 @@
   align-items: center;
   color: #fff;
   border-radius: 0 0 0.25rem 0.25rem;
+  padding:0 0.63rem
 }
