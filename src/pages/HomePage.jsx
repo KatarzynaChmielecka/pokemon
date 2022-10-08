@@ -1,6 +1,12 @@
+import ScrollToTop from 'react-scroll-to-top';
+import { useContext } from 'react';
+
 import AllPokemons from '../components/AllPokemons';
+import { PokemonContext } from '../context/PokemonContext';
 
 const HomePage = () => {
+  const { inputText, isLoading } = useContext(PokemonContext);
+
   return (
     <div
     // style={{
@@ -12,7 +18,12 @@ const HomePage = () => {
 
     // }}
     >
-      <AllPokemons />
+      {isLoading ? (
+        <h1>Gathering pokemons...</h1>
+      ) : (
+        <AllPokemons searchInput={inputText} />
+      )}
+      <ScrollToTop smooth color="white" style={{ background: 'black' }} />
     </div>
   );
 };

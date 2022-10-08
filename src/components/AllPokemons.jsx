@@ -1,40 +1,21 @@
-import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { useContext } from 'react';
 
 import PokemonCard from './PokemonCard';
+import { PokemonContext } from '../context/PokemonContext';
 import { colors } from '../consts/colors';
 
-const AllPokemons = () => {
-  const [allPokemons, setAllPokemons] = useState([]);
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=30';
+const AllPokemons = ({ searchInput }) => {
+  const { allPokemons } = useContext(PokemonContext);
 
-  useEffect(() => {
-    const getAllPokemons = async () => {
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-
-        const getPokemon = (result) => {
-          result.map(async (pokemon) => {
-            const res = await fetch(
-              `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`,
-            );
-            const resJson = await res.json();
-
-            setAllPokemons((currentList) => [...currentList, resJson]);
-          });
-        };
-        getPokemon(data.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    getAllPokemons();
-  }, []);
-
+  const filteredSearchPokemons = allPokemons.filter((el) =>
+    searchInput === '' ? el : el.name.toLowerCase().includes(searchInput),
+  );
   return (
     <>
-      {allPokemons.map((index) => (
+      {filteredSearchPokemons.length === 0 && <h1>No data found</h1>}
+      {/* <div style={{ display: 'flex',  maxWidth:'500px', flexWrap:'wrap'}}> */}
+      {filteredSearchPokemons.map((index) => (
         <PokemonCard
           key={index.id}
           index={index}
@@ -49,8 +30,12 @@ const AllPokemons = () => {
           }
         />
       ))}
+      {/* </div> */}
     </>
   );
 };
 
 export default AllPokemons;
+AllPokemons.propTypes = {
+  searchInput: PropTypes.string,
+};

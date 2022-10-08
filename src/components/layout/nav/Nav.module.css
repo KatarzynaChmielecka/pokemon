@@ -1,0 +1,11 @@
+.navigation {
+  background: #e9463c;
+  width: 100%;
+  height: 55px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sort{
+    rotate: 180deg;
+}
