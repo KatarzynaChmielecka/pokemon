@@ -1,3 +1,4 @@
+import ScrollToTop from 'react-scroll-to-top';
 import { useContext } from 'react';
 
 import AllPokemons from '../components/AllPokemons';
@@ -22,6 +23,7 @@ const HomePage = () => {
       ) : (
         <AllPokemons searchInput={inputText} />
       )}
+      <ScrollToTop smooth color="white" style={{ background: 'black' }} />
     </div>
   );
 };

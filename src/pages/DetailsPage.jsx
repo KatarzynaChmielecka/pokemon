@@ -77,6 +77,7 @@ const DetailsPage = () => {
           <PokemonDetails
             name={pokemonDetails.types.map((index) => index.type.name)}
             image={pokemonDetails.sprites.front_default}
+            alt={pokemonDetails.name + ' image'}
           />
         )}
 

@@ -14,6 +14,7 @@ const AllPokemons = ({ searchInput }) => {
   return (
     <>
       {filteredSearchPokemons.length === 0 && <h1>No data found</h1>}
+      {/* <div style={{ display: 'flex',  maxWidth:'500px', flexWrap:'wrap'}}> */}
       {filteredSearchPokemons.map((index) => (
         <PokemonCard
           key={index.id}
@@ -29,6 +30,7 @@ const AllPokemons = ({ searchInput }) => {
           }
         />
       ))}
+      {/* </div> */}
     </>
   );
 };
