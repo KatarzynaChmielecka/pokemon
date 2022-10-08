@@ -1,0 +1,27 @@
+.card-wrapper {
+  width: 9.38rem;
+  height: 9.38rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+}
+
+.card-wrapper img {
+  width: fit-content;
+  height: fit-content;
+}
+
+.card-wrapper__name {
+  height: 1.25rem;
+  width: 100%;
+  background: #00000050;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 0 0 0.25rem 0.25rem;
+}
