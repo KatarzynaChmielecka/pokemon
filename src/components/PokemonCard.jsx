@@ -12,7 +12,7 @@ const PokemonCard = ({ image, alt, name, color1, color2 }) => {
         }}
         className={classes['card-wrapper']}
       >
-        <img src={image} alt={alt} />
+        <img src={image} alt={alt} loading="lazy" />
         <p className={classes['card-wrapper__name']}>
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </p>
