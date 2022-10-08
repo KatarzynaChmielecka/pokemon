@@ -6,7 +6,6 @@ import classes from './Layout.module.css';
 const Layout = () => {
   return (
     <>
-
       <Nav />
       <main className={classes.main}>
         <Outlet />

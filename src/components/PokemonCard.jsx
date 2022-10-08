@@ -1,20 +1,23 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import classes from './PokemonCard.module.css';
+
 const PokemonCard = ({ image, alt, name, color1, color2 }) => {
   return (
-    <div
-      style={{
-        width: '150px',
-        height: '150px',
-        background: `linear-gradient(90deg, ${color2} 50%, ${color1} 0%)`,
-      }}
-    >
-      <Link to={`/details/${name}`}>
-        <img src={image} alt={alt} />
-        <h1>{name}</h1>
-      </Link>
-    </div>
+    <Link to={`/details/${name}`}>
+      <div
+        style={{
+          background: `linear-gradient(90deg, ${color2} 50%, ${color1} 0%)`,
+        }}
+        className={classes['card-wrapper']}
+      >
+        <img src={image} alt={alt} loading="lazy" />
+        <p className={classes['card-wrapper__name']}>
+          {name.charAt(0).toUpperCase() + name.slice(1)}
+        </p>
+      </div>
+    </Link>
   );
 };
 
