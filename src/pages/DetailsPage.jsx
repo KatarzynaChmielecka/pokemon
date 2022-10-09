@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 import Moves from '../components/Moves';
 import PokemonDetails from '../components/PokemonDetails';
 import Stats from '../components/Stats';
-import classes from './Details.module.css';
+import classes from './DetailsPage.module.css';
 
 const DetailsPage = () => {
   const { name } = useParams();
@@ -66,7 +66,7 @@ const DetailsPage = () => {
   });
 
   return (
-    <TabsUnstyled defaultValue={0} style={{ width: '100%' }}>
+    <TabsUnstyled defaultValue={0} className={classes.tabs}>
       <TabsListUnstyled className={classes['tabs-list']}>
         <TabUnstyled className={classes.tab}>DETAILS</TabUnstyled>
         <TabUnstyled className={classes.tab}>MOVES</TabUnstyled>
@@ -75,21 +75,20 @@ const DetailsPage = () => {
       <TabPanelUnstyled value={0}>
         {pokemonDetails && (
           <PokemonDetails
-            name={pokemonDetails.types.map((index) => index.type.name)}
-            image={pokemonDetails.sprites.front_default}
+            pokemonDetails={pokemonDetails}
+            pokemonSpecies={pokemonSpecies}
+            name={pokemonDetails.name}
+            types={pokemonDetails.types.map((index) => index.type.name)}
+            src={pokemonDetails.sprites.front_default}
             alt={pokemonDetails.name + ' image'}
-          />
-        )}
-
-        {pokemonSpecies && (
-          <>
-            <p>
-              {pokemonSpecies.flavor_text_entries[0].flavor_text.replace(
+            text={
+              pokemonSpecies &&
+              pokemonSpecies.flavor_text_entries[0].flavor_text.replace(
                 '\f',
                 ' ',
-              )}
-            </p>
-          </>
+              )
+            }
+          />
         )}
         <div>
           <h2>Base stats</h2>
