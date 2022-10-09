@@ -1,18 +1,27 @@
 import PropTypes from 'prop-types';
 
-const PokemonDetails = ({ name, image, alt }) => {
+const PokemonDetails = ({ text, name, types, src, alt }) => {
   return (
     <div>
-      <h1>{name}</h1>
-      <img src={image} alt={alt} />
+      <div>
+        {name}
+        <span>{types[0]}</span>
+        <span>{types[1]}</span>
+      </div>
+      <div>
+        <img src={src} alt={alt} />
+        <p>{text}</p>
+      </div>
     </div>
   );
 };
 
-export default PokemonDetails;
-
 PokemonDetails.propTypes = {
-  image: PropTypes.string,
-  name: PropTypes.array,
+  text: PropTypes.string,
+  name: PropTypes.string,
+  types: PropTypes.array,
+  src: PropTypes.string,
   alt: PropTypes.string,
 };
+
+export default PokemonDetails;
