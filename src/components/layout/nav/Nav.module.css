@@ -40,6 +40,9 @@
   margin: 0 1.25rem;
 }
 
+.nav-details-page h1 {
+  font-size: 1.25rem;
+}
 .nav-details-page h1::first-letter {
   text-transform: uppercase;
 }
