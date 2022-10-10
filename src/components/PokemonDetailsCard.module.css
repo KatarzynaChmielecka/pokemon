@@ -23,8 +23,8 @@
 
 .pokemon-details-card__header span {
   text-transform: uppercase;
-  padding: 0.31rem 0.31rem 0.19rem 0.31rem;
-  font-size: 0.75rem;
+  padding: 0.31rem;
+  font-size: 0.69rem;
   color: #fff;
 }
 

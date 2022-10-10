@@ -69,11 +69,11 @@ const DetailsPage = () => {
   return (
     <TabsUnstyled defaultValue={0} className={classes.tabs}>
       <TabsListUnstyled className={classes['tabs-list']}>
-        <TabUnstyled className={classes.tab}>DETAILS</TabUnstyled>
-        <TabUnstyled className={classes.tab}>MOVES</TabUnstyled>
-        <TabUnstyled className={classes.tab}>PLACES</TabUnstyled>
+        <TabUnstyled className={classes['tab-name']}>DETAILS</TabUnstyled>
+        <TabUnstyled className={classes['tab-name']}>MOVES</TabUnstyled>
+        <TabUnstyled className={classes['tab-name']}>PLACES</TabUnstyled>
       </TabsListUnstyled>
-      <TabPanelUnstyled value={0}>
+      <TabPanelUnstyled value={0} className={classes['tab-panel']}>
         {pokemonDetails && (
           <PokemonDetailsCard
             pokemonDetails={pokemonDetails}
@@ -111,7 +111,7 @@ const DetailsPage = () => {
             ))}
         </div>
       </TabPanelUnstyled>
-      <TabPanelUnstyled value={1}>
+      <TabPanelUnstyled value={1} className={classes['tab-panel']}>
         <ol>
           {filteredMoves.map((index) => (
             <Moves
@@ -125,7 +125,9 @@ const DetailsPage = () => {
           ))}
         </ol>
       </TabPanelUnstyled>
-      <TabPanelUnstyled value={2}>PLACES</TabPanelUnstyled>
+      <TabPanelUnstyled value={2} className={classes['tab-panel']}>
+        PLACES
+      </TabPanelUnstyled>
     </TabsUnstyled>
   );
 };
