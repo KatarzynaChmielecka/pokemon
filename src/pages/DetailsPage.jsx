@@ -6,9 +6,10 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Moves from '../components/Moves';
-import PokemonDetails from '../components/PokemonDetails';
+import PokemonDetailsCard from '../components/PokemonDetailsCard';
 import Stats from '../components/Stats';
 import classes from './DetailsPage.module.css';
+import { colors } from '../consts/colors';
 
 const DetailsPage = () => {
   const { name } = useParams();
@@ -68,19 +69,25 @@ const DetailsPage = () => {
   return (
     <TabsUnstyled defaultValue={0} className={classes.tabs}>
       <TabsListUnstyled className={classes['tabs-list']}>
-        <TabUnstyled className={classes.tab}>DETAILS</TabUnstyled>
-        <TabUnstyled className={classes.tab}>MOVES</TabUnstyled>
-        <TabUnstyled className={classes.tab}>PLACES</TabUnstyled>
+        <TabUnstyled className={classes['tab-name']}>DETAILS</TabUnstyled>
+        <TabUnstyled className={classes['tab-name']}>MOVES</TabUnstyled>
+        <TabUnstyled className={classes['tab-name']}>PLACES</TabUnstyled>
       </TabsListUnstyled>
-      <TabPanelUnstyled value={0}>
+      <TabPanelUnstyled value={0} className={classes['tab-panel']}>
         {pokemonDetails && (
-          <PokemonDetails
+          <PokemonDetailsCard
             pokemonDetails={pokemonDetails}
             pokemonSpecies={pokemonSpecies}
             name={pokemonDetails.name}
             types={pokemonDetails.types.map((index) => index.type.name)}
             src={pokemonDetails.sprites.front_default}
             alt={pokemonDetails.name + ' image'}
+            color1={colors[pokemonDetails.types[0].type.name]}
+            color2={
+              pokemonDetails.types[1]
+                ? colors[pokemonDetails.types[1].type.name]
+                : ''
+            }
             text={
               pokemonSpecies &&
               pokemonSpecies.flavor_text_entries[0].flavor_text.replace(
@@ -90,8 +97,10 @@ const DetailsPage = () => {
             }
           />
         )}
-        <div>
-          <h2>Base stats</h2>
+        <div className={classes['pokemon-stats-wrapper']}>
+          <h2 className={classes['pokemon-stats-wrapper__title']}>
+            Base stats
+          </h2>
           {pokemonDetails &&
             pokemonDetails.stats.map((index) => (
               <Stats
@@ -102,8 +111,8 @@ const DetailsPage = () => {
             ))}
         </div>
       </TabPanelUnstyled>
-      <TabPanelUnstyled value={1}>
-        <ol>
+      <TabPanelUnstyled value={1} className={classes['tab-panel']}>
+        <div className={classes['pokemon-moves-wrapper']}>
           {filteredMoves.map((index) => (
             <Moves
               key={index.name}
@@ -112,11 +121,14 @@ const DetailsPage = () => {
               pp={index.pp}
               power={index.power}
               type={index.type.name}
+              color={colors[index.type.name]}
             />
           ))}
-        </ol>
+        </div>
       </TabPanelUnstyled>
-      <TabPanelUnstyled value={2}>PLACES</TabPanelUnstyled>
+      <TabPanelUnstyled value={2} className={classes['tab-panel']}>
+        Coming soon...
+      </TabPanelUnstyled>
     </TabsUnstyled>
   );
 };
