@@ -30,26 +30,32 @@ const Nav = () => {
   return (
     <nav className={classes.navigation}>
       {location.pathname === `/details/${params.name}` ? (
-        <>
-          <ArrowBackIcon onClick={() => navigate(-1)} />
-          <h1 style={{ color: 'red' }}>{params.name} </h1>
-        </>
+        <div className={classes['nav-details-page']}>
+          <ArrowBackIcon
+            onClick={() => navigate(-1)}
+            className={classes['nav-details-page__arrow-back']}
+          />
+          <h1>{params.name} </h1>
+        </div>
       ) : (
-        <>
+        <div className={classes['nav-home-page']}>
           <h1>Pokédex</h1>
-          <div style={{ display: 'flex' }}>
+          <div className={classes['nav-home-page__icons']}>
             {searchToggle && <SearchBar />}
             <SearchIcon
-              sx={{ margin: '0 25px 0 0' }}
               onClick={handleSearchToggle}
+              className={classes['nav-home-page__icons-search']}
             />
             {toggle ? (
               <SortIcon onClick={handleSort} />
             ) : (
-              <SortIcon sx={{ rotate: '180deg' }} onClick={handleSort} />
+              <SortIcon
+                onClick={handleSort}
+                className={classes['nav-home-page__icons-sort']}
+              />
             )}
           </div>
-        </>
+        </div>
       )}
     </nav>
   );
