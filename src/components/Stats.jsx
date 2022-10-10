@@ -1,30 +1,23 @@
 import PropTypes from 'prop-types';
 
+import classes from './Stats.module.css';
+
 const Stats = ({ name, base_stat }) => {
   return (
-    <section>
-      <h6>{name}</h6>
-      <div
-        style={{
-          width: '150px',
-          height: '5px',
-          background: 'grey',
-          position: 'relative',
-        }}
-      >
-        <div
-          style={{
-            width: `${base_stat}px`,
-            height: '100%',
-            background: 'blue',
-            position: 'absolute',
-            top: '0',
-            left: '0',
-          }}
-        />
-      </div>
-      <h6>{base_stat}</h6>
-    </section>
+    <div className={classes['pokemon-stats']}>
+      <p className={classes['pokemon-stats__name']}>{name}</p>
+      <span className={classes['pokemon-stats__content-wrapper']}>
+        <div className={classes['pokemon-stats__progress-outer']}>
+          <div
+            style={{
+              width: `calc(${base_stat}px - ${base_stat / 1.4}px)`,
+            }}
+            className={classes['pokemon-stats__progress-inner']}
+          />
+        </div>
+        <p className={classes['pokemon-stats__points']}>{base_stat}</p>
+      </span>
+    </div>
   );
 };
 

@@ -97,8 +97,10 @@ const DetailsPage = () => {
             }
           />
         )}
-        <div>
-          <h2>Base stats</h2>
+        <div className={classes['pokemon-stats-wrapper']}>
+          <h2 className={classes['pokemon-stats-wrapper__title']}>
+            Base stats
+          </h2>
           {pokemonDetails &&
             pokemonDetails.stats.map((index) => (
               <Stats
