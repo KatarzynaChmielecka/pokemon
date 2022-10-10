@@ -3,14 +3,24 @@
 }
 .tabs-list {
   width: 100%;
+  max-width: 75rem;
+  height: 3.4375rem;
+  background: #e9463c;
+  display: flex;
+  justify-content: center;
 }
 .tab-name {
-  width: 30%;
+  width: 33%;
   border: none;
   background: none;
+  color: #fff;
 }
 .tab-name:focus {
   border-bottom: 0.13rem solid #4ea2f3;
+}
+
+.tab-name:hover {
+  cursor: pointer;
 }
 .tab-panel {
   display: flex;
