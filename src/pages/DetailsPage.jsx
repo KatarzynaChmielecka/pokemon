@@ -112,7 +112,7 @@ const DetailsPage = () => {
         </div>
       </TabPanelUnstyled>
       <TabPanelUnstyled value={1} className={classes['tab-panel']}>
-        <ol>
+        <div className={classes['pokemon-moves-wrapper']}>
           {filteredMoves.map((index) => (
             <Moves
               key={index.name}
@@ -121,12 +121,13 @@ const DetailsPage = () => {
               pp={index.pp}
               power={index.power}
               type={index.type.name}
+              color={colors[index.type.name]}
             />
           ))}
-        </ol>
+        </div>
       </TabPanelUnstyled>
       <TabPanelUnstyled value={2} className={classes['tab-panel']}>
-        PLACES
+        Coming soon...
       </TabPanelUnstyled>
     </TabsUnstyled>
   );
