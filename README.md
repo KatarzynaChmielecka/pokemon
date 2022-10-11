@@ -47,7 +47,6 @@
 ### Continued development
 
 Ideas for future:
-- improve navbar
 - add typescript
 - add tests
 - add places where you can find pokemon
