@@ -1,11 +1,11 @@
 import { createContext, useEffect, useState } from 'react';
 
-interface PokemonInterface {
-  name: string;
-  url: string;
-}
+import {
+  PokemonContextProps,
+  PokemonInterface,
+} from '../interfaces/interfaces';
 
-export const PokemonContext = createContext<object | null>(null);
+export const PokemonContext = createContext({} as PokemonContextProps);
 export const PokemonContextProvider = ({
   children,
 }: {
@@ -29,7 +29,6 @@ export const PokemonContextProvider = ({
             const resJson = await res.json();
 
             setAllPokemons((currentList) => [...currentList, resJson]);
-
             setIsLoading(false);
           });
         };

@@ -134,5 +134,3 @@ const DetailsPage = () => {
 };
 
 export default DetailsPage;
-
-//test
