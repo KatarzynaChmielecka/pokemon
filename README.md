@@ -47,7 +47,7 @@
 ### Continued development
 
 Ideas for future:
-- add typescript
+- add typescript: IN PROGRESS
 - add tests
 - add places where you can find pokemon
 
