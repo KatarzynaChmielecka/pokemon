@@ -6,9 +6,11 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:react/jsx-runtime",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "plugins": ["react", "import", "jsx-a11y", "prettier"],
+  "plugins": ["react", "import", "jsx-a11y", "prettier", "@typescript-eslint"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module",
@@ -27,6 +29,8 @@
     "react-hooks/exhaustive-deps": 0,
     "prettier/prettier": 1,
     "no-unused-vars": 1,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
     "import/no-unresolved": [2, { "caseSensitive": false }]
   },
   "settings": {
@@ -39,5 +43,6 @@
       }
     }
   },
-  "root": true
+  "root": true,
+  "parser": "@typescript-eslint/parser"
 }
