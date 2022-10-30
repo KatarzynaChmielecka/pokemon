@@ -35,6 +35,7 @@
 
 ### Built with
 - react
+- typescript (in progress)
 - react context
 - react router
 - mui base
