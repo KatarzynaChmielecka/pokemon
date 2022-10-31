@@ -35,7 +35,7 @@
 
 ### Built with
 - react
-- typescript (in progress)
+- typescript
 - react context
 - react router
 - mui base
@@ -48,7 +48,6 @@
 ### Continued development
 
 Ideas for future:
-- add typescript: IN PROGRESS
 - add tests
 - add places where you can find pokemon
 
