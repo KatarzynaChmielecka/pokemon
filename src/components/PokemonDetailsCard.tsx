@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
-
 import classes from './PokemonDetailsCard.module.css';
+import { PokemonDetailsCardInterface } from '../interfaces/interfaces';
 
 const PokemonDetailsCard = ({
   text,
@@ -10,7 +9,7 @@ const PokemonDetailsCard = ({
   alt,
   color1,
   color2,
-}) => {
+}: PokemonDetailsCardInterface) => {
   return (
     <div className={classes['pokemon-details-card']}>
       <div className={classes['pokemon-details-card__header']}>
@@ -24,16 +23,6 @@ const PokemonDetailsCard = ({
       </div>
     </div>
   );
-};
-
-PokemonDetailsCard.propTypes = {
-  text: PropTypes.string,
-  name: PropTypes.string,
-  types: PropTypes.array,
-  src: PropTypes.string,
-  alt: PropTypes.string,
-  color1: PropTypes.string,
-  color2: PropTypes.string,
 };
 
 export default PokemonDetailsCard;

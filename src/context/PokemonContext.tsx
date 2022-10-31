@@ -1,10 +1,17 @@
-import PropTypes from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 
-export const PokemonContext = createContext();
+import {
+  PokemonContextProps,
+  PokemonInterface,
+} from '../interfaces/interfaces';
 
-export const PokemonContextProvider = ({ children }) => {
-  const [allPokemons, setAllPokemons] = useState([]);
+export const PokemonContext = createContext({} as PokemonContextProps);
+export const PokemonContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [allPokemons, setAllPokemons] = useState<PokemonInterface[]>([]);
   const [inputText, setInputText] = useState('');
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=2000';
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +21,7 @@ export const PokemonContextProvider = ({ children }) => {
         const res = await fetch(url);
         const data = await res.json();
 
-        const getPokemon = (result) => {
+        const getPokemon = (result: PokemonInterface[]) => {
           result.map(async (pokemon) => {
             const res = await fetch(
               `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`,
@@ -22,7 +29,6 @@ export const PokemonContextProvider = ({ children }) => {
             const resJson = await res.json();
 
             setAllPokemons((currentList) => [...currentList, resJson]);
-
             setIsLoading(false);
           });
         };
@@ -49,8 +55,4 @@ export const PokemonContextProvider = ({ children }) => {
       {children}
     </PokemonContext.Provider>
   );
-};
-
-PokemonContextProvider.propTypes = {
-  children: PropTypes.node,
 };

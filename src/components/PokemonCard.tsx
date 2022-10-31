@@ -1,9 +1,15 @@
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import classes from './PokemonCard.module.css';
+import { PokemonCardInterface } from '../interfaces/interfaces';
 
-const PokemonCard = ({ image, alt, name, color1, color2 }) => {
+const PokemonCard = ({
+  image,
+  alt,
+  name,
+  color1,
+  color2,
+}: PokemonCardInterface) => {
   return (
     <Link to={`/details/${name}`}>
       <div
@@ -22,10 +28,3 @@ const PokemonCard = ({ image, alt, name, color1, color2 }) => {
 };
 
 export default PokemonCard;
-PokemonCard.propTypes = {
-  image: PropTypes.string,
-  alt: PropTypes.string,
-  name: PropTypes.string,
-  color1: PropTypes.string,
-  color2: PropTypes.string,
-};

@@ -1,24 +1,24 @@
-import PropTypes from 'prop-types';
 import { useContext } from 'react';
 
 import PokemonCard from './PokemonCard';
 import { PokemonContext } from '../context/PokemonContext';
+import { PokemonInfo, PokemonInterface } from '../interfaces/interfaces';
 import { colors } from '../consts/colors';
 
-const AllPokemons = ({ searchInput }) => {
+const AllPokemons = ({ searchInput }: { searchInput: string }) => {
   const { allPokemons } = useContext(PokemonContext);
 
-  const filteredSearchPokemons = allPokemons.filter((el) =>
+  const filteredSearchPokemons = allPokemons.filter((el: PokemonInterface) =>
     searchInput === '' ? el : el.name.toLowerCase().includes(searchInput),
   );
+
   return (
     <>
       {filteredSearchPokemons.length === 0 && <h1>No pokemon found :(</h1>}
 
-      {filteredSearchPokemons.map((index) => (
+      {filteredSearchPokemons.map((index: PokemonInfo) => (
         <PokemonCard
           key={index.id}
-          index={index}
           image={index.sprites.front_default}
           alt={index.name + ' image'}
           name={index.name}
@@ -35,6 +35,3 @@ const AllPokemons = ({ searchInput }) => {
 };
 
 export default AllPokemons;
-AllPokemons.propTypes = {
-  searchInput: PropTypes.string,
-};
