@@ -9,13 +9,21 @@ import Moves from '../components/Moves';
 import PokemonDetailsCard from '../components/PokemonDetailsCard';
 import Stats from '../components/Stats';
 import classes from './DetailsPage.module.css';
+import {
+  MovesInterface,
+  PokemonDetailsInterface,
+  SpeciesInterface,
+} from '../interfaces/interfaces';
 import { colors } from '../consts/colors';
 
 const DetailsPage = () => {
   const { name } = useParams();
-  const [pokemonDetails, setPokemonDetails] = useState(null);
-  const [pokemonSpecies, setPokemonSpecies] = useState(null);
-  const [pokemonMoves, setPokemonMoves] = useState([]);
+  const [pokemonDetails, setPokemonDetails] =
+    useState<PokemonDetailsInterface | null>(null);
+  const [pokemonSpecies, setPokemonSpecies] = useState<SpeciesInterface | null>(
+    null,
+  );
+  const [pokemonMoves, setPokemonMoves] = useState<MovesInterface[]>([]);
   useEffect(() => {
     const getPokemon = async () => {
       const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
@@ -31,7 +39,7 @@ const DetailsPage = () => {
       const allMoves = await fetch(`https://pokeapi.co/api/v2/move?limit=1000`);
       const resJson = await allMoves.json();
 
-      const getMove = (result) => {
+      const getMove = (result: MovesInterface[]) => {
         result.map(async (index) => {
           const res = await fetch(
             `https://pokeapi.co/api/v2/move/${index.name}`,
@@ -59,11 +67,11 @@ const DetailsPage = () => {
   }, []);
 
   const filteredMoves = pokemonMoves.filter((index) => {
-    const movesDetails = pokemonDetails.moves.map((index) => index.move.name);
+    const movesDetails = pokemonDetails?.moves.map((index) => index.move.name);
 
     const moves = index.name;
 
-    return movesDetails.includes(moves);
+    return movesDetails?.includes(moves);
   });
 
   return (
@@ -76,8 +84,6 @@ const DetailsPage = () => {
       <TabPanelUnstyled value={0} className={classes['tab-panel']}>
         {pokemonDetails && (
           <PokemonDetailsCard
-            pokemonDetails={pokemonDetails}
-            pokemonSpecies={pokemonSpecies}
             name={pokemonDetails.name}
             types={pokemonDetails.types.map((index) => index.type.name)}
             src={pokemonDetails.sprites.front_default}
@@ -89,11 +95,12 @@ const DetailsPage = () => {
                 : ''
             }
             text={
-              pokemonSpecies &&
-              pokemonSpecies.flavor_text_entries[0].flavor_text.replace(
-                '\f',
-                ' ',
-              )
+              pokemonSpecies
+                ? pokemonSpecies.flavor_text_entries[0].flavor_text.replace(
+                    '\f',
+                    ' ',
+                  )
+                : 'No data found'
             }
           />
         )}
@@ -120,7 +127,7 @@ const DetailsPage = () => {
               accuracy={index.accuracy}
               pp={index.pp}
               power={index.power}
-              type={index.type.name}
+              type={index.type}
               color={colors[index.type.name]}
             />
           ))}

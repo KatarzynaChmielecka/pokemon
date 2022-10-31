@@ -1,6 +1,5 @@
 export interface PokemonInfo {
   id: number;
-  // index: number;
   sprites: { front_default: string };
   name: string;
   types: { type: { name: string } }[];
@@ -9,7 +8,6 @@ export interface PokemonInfo {
 export interface PokemonInterface extends PokemonInfo {
   name: string;
   url: string;
-  // moves: any[];
 }
 
 export interface PokemonContextProps {
@@ -21,37 +19,25 @@ export interface PokemonContextProps {
   isLoading: boolean;
 }
 
-export interface MovesInterface extends PokemonInfo {
+export interface MovesInterface {
   name: string;
   accuracy: number;
   pp: number;
   power: number;
-  type: string;
+  type: { name: string };
   color: string;
 }
 
 export interface PokemonDetailsInterface {
-  abilities: any;
-  base_experience: any;
-  forms: any;
-  game_indices: any;
-  height: any;
-  held_items: any;
-  id: number;
-  is_default: boolean;
-  location_area_encounters: string;
-
   name: string;
-  order: number;
-  past_types: any;
-  species: any;
+  types: { type: { name: string } }[];
+  sprites: { front_default: string };
   stats: {
     base_stat: number;
     effort: number;
     stat: { name: string; url: string };
   }[];
-  types: { type: { name: string } }[];
-  moves: { move: { name: string; url: string }; version_group_details: any }[];
+  moves: { move: { name: string } }[];
 }
 
 export interface PokemonCardInterface {
@@ -70,4 +56,8 @@ export interface PokemonDetailsCardInterface {
   alt: string;
   color1: string;
   color2: string;
+}
+
+export interface SpeciesInterface {
+  flavor_text_entries: { flavor_text: string }[];
 }

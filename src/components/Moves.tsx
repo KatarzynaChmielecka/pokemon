@@ -12,7 +12,7 @@ const Moves = ({ name, accuracy, pp, power, type, color }: MovesInterface) => {
           }}
           className={classes['moves-card-wrapper__move-type']}
         >
-          {type}
+          {type.name}
         </span>
       </div>
       <div className={classes['moves-card-wrapper__right']}>
