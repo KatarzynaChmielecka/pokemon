@@ -1,8 +1,6 @@
-import PropTypes from 'prop-types';
-
 import classes from './Stats.module.css';
 
-const Stats = ({ name, base_stat }) => {
+const Stats = ({ name, base_stat }: { base_stat: number; name: string }) => {
   return (
     <div className={classes['pokemon-stats']}>
       <p className={classes['pokemon-stats__name']}>{name}</p>
@@ -22,8 +20,3 @@ const Stats = ({ name, base_stat }) => {
 };
 
 export default Stats;
-
-Stats.propTypes = {
-  base_stat: PropTypes.number,
-  name: PropTypes.string,
-};

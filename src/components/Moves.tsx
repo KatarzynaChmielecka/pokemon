@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
-
 import classes from './Moves.module.css';
+import { MovesInterface } from '../interfaces/interfaces';
 
-const Moves = ({ name, accuracy, pp, power, type, color }) => {
+const Moves = ({ name, accuracy, pp, power, type, color }: MovesInterface) => {
   return (
     <div className={classes['moves-card-wrapper']}>
       <div className={classes['moves-card-wrapper__left']}>
@@ -26,12 +25,3 @@ const Moves = ({ name, accuracy, pp, power, type, color }) => {
 };
 
 export default Moves;
-
-Moves.propTypes = {
-  name: PropTypes.string,
-  accuracy: PropTypes.number,
-  pp: PropTypes.number,
-  power: PropTypes.number,
-  type: PropTypes.string,
-  color: PropTypes.string,
-};
